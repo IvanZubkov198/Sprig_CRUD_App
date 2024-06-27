@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/addNewUser")
-    public String addNewUser(Model model) {
+    public String showForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "user-info";
@@ -45,7 +45,7 @@ public class UserController {
     }
 
     @GetMapping("/updateInfo")
-    public String editUser(@RequestParam("id") long id, Model model) {
+    public String editForm(@RequestParam("id") long id, Model model) {
         User user = userService.getUser(id);
         model.addAttribute("user", user);
         return "user-info";
