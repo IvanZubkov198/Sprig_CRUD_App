@@ -21,14 +21,14 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public String allUsers(Model model) {
+    public String readAllUsers(Model model) {
         List<User> allUsers = userService.getAllUsers();
         model.addAttribute("allUsers", allUsers);
         return "all-users";
     }
 
     @GetMapping("/addNewUser")
-    public String addNewUser(Model model) {
+    public String crateNewUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "user-info";

@@ -27,6 +27,11 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public void updateUser(User user) {
+        entityManager.merge(user);
+    }
+
+    @Override
     public List<User> getAllUsers() {
         List<User> users = entityManager.createQuery("select u from User u", User.class).getResultList();
         return users;
