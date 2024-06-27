@@ -45,10 +45,16 @@ public class UserController {
     }
 
     @GetMapping("/updateInfo")
-    public String updateUser(@RequestParam("id") long id, Model model) {
+    public String editUser(@RequestParam("id") long id, Model model) {
         User user = userService.getUser(id);
         model.addAttribute("user", user);
         return "user-info";
+    }
+
+    @PostMapping
+    public String updateUser(@Valid @ModelAttribute("user") User user) {
+        userService.updateUser(user);
+        return "redirect:/";
     }
 
     @GetMapping("/deleteUser")
